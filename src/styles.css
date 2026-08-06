@@ -77,9 +77,9 @@
   --shadow-glow: 0 0 42px -8px oklch(0.83 0.11 200 / 35%);
   --gradient-veil: linear-gradient(
     to bottom,
-    oklch(0.1 0.02 260 / 0.72) 0%,
+    oklch(0.1 0.02 260 / 0.66) 0%,
     oklch(0.1 0.02 260 / 0.52) 38%,
-    oklch(0.1 0.02 260 / 0.66) 100%
+    oklch(0.1 0.02 260 / 0.64) 100%
   );
 }
 
