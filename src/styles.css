@@ -6,12 +6,13 @@
 
 @font-face {
   font-family: "Ogg";
-  src: url("https://dcym8fthxf5uu.cloudfront.net/fonts/247a073c-29f5-4a89-aa3a-741020f346fc/OggText-Medium.woff2")
+  src: url("/__l5e/assets-v1/bf8891b6-e789-4a61-a6e7-60e948b1c8b5/OggText-Medium.woff2")
     format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
