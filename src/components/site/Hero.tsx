@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { GlassButton } from "./GlassButton";
 import { WorkflowRail } from "./WorkflowRail";
+import { Wordmark } from "./Logo";
 import { usePointerParallax } from "@/hooks/use-pointer-parallax";
 
 const ease = [0.22, 1, 0.36, 1] as const;
