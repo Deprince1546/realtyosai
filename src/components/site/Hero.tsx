@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { GlassButton } from "./GlassButton";
 import { WorkflowRail } from "./WorkflowRail";
+import { Wordmark } from "./Logo";
 import { usePointerParallax } from "@/hooks/use-pointer-parallax";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -27,7 +28,7 @@ export function Hero() {
           transition={{ duration: 1.15, ease, delay: 0.5 }}
           className="font-display mt-6 text-[clamp(3.6rem,13vw,10rem)] leading-[0.92] text-foreground"
         >
-          RealtyOS
+          <Wordmark />
         </motion.h1>
 
         <motion.p

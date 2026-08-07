@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import heroScene from "@/assets/hero-scene.mp4.asset.json";
+const heroScene = { url: "/hero-scene.mp4" };
 
 /**
  * Scroll-scrubbed cinematic scene.

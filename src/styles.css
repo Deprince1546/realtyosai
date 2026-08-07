@@ -6,8 +6,7 @@
 
 @font-face {
   font-family: "Ogg";
-  src: url("/__l5e/assets-v1/bf8891b6-e789-4a61-a6e7-60e948b1c8b5/OggText-Medium.woff2")
-    format("woff2");
+  src: url("/fonts/OggText-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
