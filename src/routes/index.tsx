@@ -8,6 +8,7 @@ import { Hero } from "@/components/site/Hero";
 import { StorySections } from "@/components/site/StorySections";
 import { GlassButton } from "@/components/site/GlassButton";
 import { Logo } from "@/components/site/Logo";
+import { getRequestOrigin } from "@/lib/origin.functions";
 
 const TITLE = "RealtyOS — The AI Operating System for Modern Real Estate";
 const DESC =
