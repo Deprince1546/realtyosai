@@ -27,7 +27,7 @@ export function Hero() {
           transition={{ duration: 1.15, ease, delay: 0.5 }}
           className="font-display mt-6 text-[clamp(3.6rem,13vw,10rem)] leading-[0.92] text-foreground"
         >
-          RealtyOS
+          <Wordmark />
         </motion.h1>
 
         <motion.p
