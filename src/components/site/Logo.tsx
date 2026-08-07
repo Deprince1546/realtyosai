@@ -1,18 +1,27 @@
 export function Logo({ className = "" }: { className?: string }) {
   return (
     <span className={`inline-flex items-center gap-2 ${className}`}>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
         <rect
-          x="1.25"
-          y="1.25"
-          width="13.5"
-          height="13.5"
-          rx="4"
+          x="1.1"
+          y="1.1"
+          width="10.4"
+          height="10.4"
+          rx="3.2"
           stroke="currentColor"
           strokeWidth="1.1"
-          opacity="0.75"
+          opacity="0.85"
         />
-        <circle cx="8" cy="8" r="2.6" fill="currentColor" />
+        <rect
+          x="6.5"
+          y="6.5"
+          width="10.4"
+          height="10.4"
+          rx="3.2"
+          stroke="currentColor"
+          strokeWidth="1.1"
+          opacity="0.6"
+        />
       </svg>
       <span className="font-display text-[15px] tracking-[0.02em] text-foreground">RealtyOS</span>
     </span>
