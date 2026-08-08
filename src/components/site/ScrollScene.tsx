@@ -36,9 +36,9 @@ export function ScrollScene() {
     };
 
     const tick = () => {
-      // spring-damped interpolation: physically weighted, never jumps
-      const stiffness = 0.085;
-      const damping = 0.78;
+      // spring-damped interpolation, tuned to track the wheel/trackpad immediately
+      const stiffness = 0.34;
+      const damping = 0.55;
       const delta = target.current - current.current;
       velocity.current = velocity.current * damping + delta * stiffness;
       current.current += velocity.current;
@@ -50,7 +50,7 @@ export function ScrollScene() {
 
       if (duration > 0 && video.readyState >= 1) {
         const t = current.current * (duration - 0.05);
-        if (Math.abs(video.currentTime - t) > 0.008) {
+        if (Math.abs(video.currentTime - t) > 0.004) {
           try {
             video.currentTime = t;
           } catch {
@@ -60,6 +60,7 @@ export function ScrollScene() {
       }
       raf = requestAnimationFrame(tick);
     };
+
 
     video.addEventListener("loadedmetadata", onMeta);
     if (video.readyState >= 1) onMeta();
