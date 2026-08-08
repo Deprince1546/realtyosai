@@ -1,1000 +1,1232 @@
-# AI Real Estate Operator
+You're right. Here is the finished README, with the useful pieces already built in: badges, live demo, 56-step workflow, architecture, screenshots/GIF placeholders, .env.example, setup instructions, Coasty integration, security, demo instructions, hackathon context, roadmap, and contribution/license sections.
 
-Build the public marketing website for a premium enterprise SaaS called **RealtyOS**.
+Replace your current README.md with this:
 
+# 🏡 RealtyOS
 
+### The AI Operating System for Modern Real Estate
 
-RealtyOS is an autonomous AI employee for the real estate industry. It is marketed as an AI that brokerages and realtors can hire to operate their business 24/7. Do not mention the underlying AI provider or technology anywhere in the UI.
+> **An autonomous AI employee designed to handle repetitive real estate operations from lead intake to closing.**
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-black?style=for-the-badge)](https://realtyosai.vercel.app)
+[![Built with React](https://img.shields.io/badge/React-TypeScript-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
+[![Open Source](https://img.shields.io/badge/Open-Source-green?style=for-the-badge)](#contributing)
 
+🌐 **Live Project:** https://realtyosai.vercel.app
 
-========================================================
+---
 
-TECH STACK
+## 🚀 What is RealtyOS?
 
-========================================================
+RealtyOS is an AI employee built for real estate agents, teams, and brokerages.
 
+Real estate businesses spend a large amount of time on repetitive operational work:
 
+- Responding to leads
+- Qualifying buyers
+- Searching properties
+- Scheduling showings
+- Updating CRMs
+- Sending brochures
+- Following up
+- Collecting documents
+- Tracking transactions
+- Monitoring deadlines
+- Preparing reports
 
-Use:
+These tasks are necessary, but they take agents and brokerage staff away from clients and revenue-generating work.
 
+**RealtyOS is designed to take over this repetitive operational workload.**
 
+Instead of simply telling an agent what needs to be done, RealtyOS is designed to perform actions across websites, business applications, CRMs, calendars, email systems, and document platforms.
 
-• React
+### The idea is simple:
 
-• TypeScript
+> **Hire RealtyOS as your AI employee.**
 
-• Tailwind CSS
+---
 
-• Framer Motion
+# 🎯 The Problem
 
-• Lucide React Icons
+A typical real estate workflow can look like this:
 
-
-
-Typography
-
-
-
-Display font:
-
-
-
-"Ogg Medium"
-
-
-
-Load from:
-
-
-
-https://dcym8fthxf5uu.cloudfront.net/fonts/247a073c-29f5-4a89-aa3a-741020f346fc/OggText-Medium.woff2
-
-
-
-Body font:
-
-
-
-Inter
-
-
-
-Component architecture.
-
-
-
-Responsive design.
-
-
-
-Dark mode only.
-
-
-
-========================================================
-
-DESIGN LANGUAGE
-
-========================================================
-
-
-
-This should feel like a $100M Silicon Valley AI startup.
-
-
-
-The design language should combine the elegance of:
-
-
-
-Apple
-
-
-
-OpenAI
-
-
-
-Linear
-
-
-
-Arc Browser
-
-
-
-Notion
-
-
-
-Tesla
-
-
-
-Avoid generic SaaS templates.
-
-
-
-Everything should feel cinematic.
-
-
-
-Minimal.
-
-
-
-Luxurious.
-
-
-
-Confident.
-
-
-
-Modern.
-
-
-
-Sophisticated.
-
-
-
-The visitor should feel like they are visiting the headquarters of an AI company rather than a normal website.
-
-
-
-========================================================
-
-COLOR PALETTE
-
-========================================================
-
-
-
-Background
-
-
-
-Near Black
-
-
-
-Navy
-
-
-
-White typography
-
-
-
-Very subtle cyan accents
-
-
-
-Heavy glassmorphism
-
-
-
-Backdrop blur
-
-
-
-Soft shadows
-
-
-
-Premium gradients
-
-
-
-High contrast
-
-
-
-========================================================
-
-HERO EXPERIENCE
-
-========================================================
-
-
-
-Use ONLY the uploaded video as the hero scene.
-
-
-
-Do not generate replacement images.
-
-
-
-Do not use stock footage.
-
-
-
-Do not create AI artwork.
-
-
-
-The uploaded video is the hero.
-
-
-
-Keep the architecture visible throughout the experience.
-
-
-
-Apply a cinematic dark overlay between 50% and 70%.
-
-
-
-The UI floats above the cinematic scene using premium glass panels.
-
-
-
-========================================================
-
-SCROLL-SCRUBBED CINEMATIC EXPERIENCE
-
-========================================================
-
-
-
-Do NOT implement traditional video playback.
-
-
-
-The uploaded scene behaves like a cinematic timeline.
-
-
-
-The visitor controls the camera movement with scrolling.
-
-
-
-At page load:
-
-
-
-The scene begins on the first frame.
-
-
-
-As the user scrolls down:
-
-
-
-the timeline advances smoothly.
-
-
-
-The camera slowly flies toward the architecture.
-
-
-
-Continues through the entrance.
-
-
-
-Moves into the interior.
-
-
-
-Reveals additional spaces naturally.
-
-
-
-Scrolling upward reverses the timeline.
-
-
-
-The movement must feel physically weighted.
-
-
-
-Never jump.
-
-
-
-Never stutter.
-
-
-
-Never skip frames.
-
-
-
-Use requestAnimationFrame with interpolation.
-
-
-
-Use easing.
-
-
-
-Use momentum.
-
-
-
-Use lerp.
-
-
-
-Use spring damping.
-
-
-
-Map scroll progress directly to timeline progress.
-
-
-
-When reaching the final frame:
-
-
-
-Freeze naturally.
-
-
-
-Do not loop while idle.
-
-
-
-Desktop:
-
-
-
-Mouse wheel controls progression.
-
-
-
-Laptop:
-
-
-
-Trackpad gestures control progression.
-
-
-
-Mobile:
-
-
-
-Vertical swipe controls progression.
-
-
-
-Maintain 60fps.
-
-
-
-Use passive scroll listeners.
-
-
-
-GPU transforms.
-
-
-
-translate3d()
-
-
-
-will-change
-
-
-
-Intersection Observer where appropriate.
-
-
-
-========================================================
-
-PARALLAX
-
-========================================================
-
-
-
-The cinematic scene never moves independently.
-
-
-
-Only foreground interface elements respond to pointer movement.
-
-
-
-Mouse movement should create depth.
-
-
-
-Headline
-
-
-
-4–6px
-
-
-
-Navigation
-
-
-
-4px
-
-
-
-Buttons
-
-
-
-2–3px
-
-
-
-Glass cards
-
-
-
-10px
-
-
-
-Everything moves independently.
-
-
-
-Never perfectly together.
-
-
-
-========================================================
-
-NAVIGATION
-
-========================================================
-
-
-
-Single page only.
-
-
-
-No route changes.
-
-
-
-No page refreshes.
-
-
-
-No multiple pages.
-
-
-
-The entire experience lives inside one immersive environment.
-
-
-
-Top Navigation
-
-
-
-Center
-
-
-
-RealtyOS logo
-
-
-
-Use a clean minimalist logo.
-
-
-
-No oversized branding.
-
-
-
-Left
-
-
-
-Hamburger Menu
-
-
-
-Right
-
-
-
-Hire RealtyOS
-
-
-
-Start Free
-
-
-
-Navigation floats over the hero using glassmorphism.
-
-
-
-Rounded corners.
-
-
-
-Soft blur.
-
-
-
-Thin borders.
-
-
-
-========================================================
-
-HAMBURGER MENU
-
-========================================================
-
-
-
-Clicking the hamburger opens a premium slide-out navigation drawer from the left.
-
-
-
-Dark glass panel.
-
-
-
-Blur background.
-
-
-
-Smooth animation.
-
-
-
-The hero scene always remains visible.
-
-
-
-The drawer contains expandable accordion sections.
-
-
-
-No separate pages.
-
-
-
-Menu
-
-
-
-Home
-
-
-
-About
-
-
-
-Features
-
-
-
-Solutions
-
-
-
-How It Works
-
-
-
-Dashboard
-
-
-
-Integrations
-
-
-
-Pricing
-
-
-
-Customers
-
-
-
-Enterprise
-
-
-
-Developers
-
-
-
-API
-
-
-
-Documentation
-
-
-
-Security
-
-
-
-FAQ
-
-
-
-Contact
-
-
-
-Clicking any menu expands rich content inside the drawer.
-
-
-
-The visitor never leaves the hero experience.
-
-
-
-========================================================
-
-LOGO PLACEMENT
-
-========================================================
-
-
-
-Place the RealtyOS logo centered in the navigation exactly like Apple's website.
-
-
-
-Minimal.
-
-
-
-Elegant.
-
-
-
-Monochrome.
-
-
-
-========================================================
-
-HERO CONTENT
-
-========================================================
-
-
-
-Large Display Heading
-
-
-
-RealtyOS
-
-
-
-Subheading
-
-
-
-The AI Operating System for Modern Real Estate.
-
-
-
-Supporting Copy
-
-
-
-Hire one AI employee that captures leads, qualifies buyers, books showings, manages transactions, updates CRMs, follows up automatically, and keeps your brokerage running every day.
-
-
-
-Primary Button
-
-
-
-Hire RealtyOS
-
-
-
-Secondary Button
-
-
-
-Start Free
-
-
-
-Do not include:
-
-
-
-Powered by...
-
-
-
-Book Demo
-
-
-
-Watch Demo
-
-
-
-Watch AI
-
-
-
-========================================================
-
-WORKFLOW
-
-========================================================
-
-
-
-Below the CTA buttons display a continuously animated workflow.
-
-
-
+```text
 Lead
-
-
-
-↓
-
-
-
-Qualification
-
-
-
-↓
-
-
-
+ ↓
+Email / Phone
+ ↓
+CRM
+ ↓
 Property Search
-
-
-
-↓
-
-
-
+ ↓
+Calendar
+ ↓
 Showing
+ ↓
+Follow-up
+ ↓
+Offer
+ ↓
+Documents
+ ↓
+Transaction
+ ↓
+Closing
+ ↓
+Reports
+
+The problem is that humans often have to move information between these systems manually.
+
+This creates:
+
+Slow lead response
+
+Poor lead qualification
+
+Missed follow-ups
+
+Manual CRM updates
+
+Scheduling conflicts
+
+Lost information
+
+Missing documents
+
+Transaction delays
+
+Poor management visibility
+
+Excessive administrative work
+
+
+RealtyOS is designed to connect these operational steps into one AI-driven workflow.
+
+
+---
+
+💡 The Solution
+
+RealtyOS acts as a digital employee.
+
+It can:
+
+RECEIVE
+   ↓
+UNDERSTAND
+   ↓
+QUALIFY
+   ↓
+RESEARCH
+   ↓
+ACT
+   ↓
+UPDATE
+   ↓
+FOLLOW UP
+   ↓
+MONITOR
+   ↓
+REPORT
+
+Where APIs are available, integrations can be used.
+
+Where a workflow requires interaction with a website or application, computer-use automation can perform the necessary browser actions.
+
+
+---
+
+🧠 The 56-Step Workflow
+
+RealtyOS is built around an end-to-end workflow containing 56 business actions.
+
+The workflow starts when a lead enters the brokerage and continues through qualification, property research, showing coordination, CRM management, transaction coordination, document collection, communication, and reporting.
+
+
+---
+
+1. Lead Intake
+
+01 — Receive a New Lead
+
+RealtyOS receives a new property inquiry or buyer lead.
+
+02 — Detect Lead Source
+
+Identifies where the lead originated.
+
+Examples:
+
+Website
+
+Property portal
+
+Advertisement
+
+Referral
+
+Open house
+
+Social media
+
+
+03 — Read the Inquiry
+
+Reads and understands the lead's message.
+
+04 — Create Buyer Profile
+
+Creates a structured profile for the potential buyer.
+
+05 — Check for Duplicate Contact
+
+Checks whether the person already exists in the brokerage's records.
+
+06 — Score the Lead
+
+Assigns a lead score based on available information.
+
+07 — Determine Urgency
+
+Determines whether the buyer is ready now, planning ahead, or researching.
+
+08 — Start Qualification
+
+Begins the buyer qualification process.
+
+
+---
+
+🏡 2. Buyer Qualification
+
+09 — Collect Budget
+
+Determines the buyer's expected price range.
+
+10 — Collect Preferred Location
+
+Identifies preferred cities, neighborhoods, or areas.
+
+11 — Collect Property Type
+
+Determines what type of property the buyer wants.
+
+12 — Collect Buying Timeline
+
+Determines when the buyer intends to purchase.
+
+13 — Check Financing Status
+
+Records whether the buyer is:
+
+Pre-approved
+
+Financing
+
+Paying cash
+
+Exploring financing
+
+
+14 — Understand Buyer Preferences
+
+Captures preferences such as:
+
+Bedrooms
+
+Bathrooms
+
+Amenities
+
+Schools
+
+Commute
+
+Neighborhood
+
+Property features
+
+
+15 — Generate Qualification Summary
+
+Creates a concise summary of the buyer.
+
+16 — Recommend Next Steps
+
+Determines the most appropriate next action.
+
+
+---
+
+🔎 3. Property Research
+
+17 — Search Property Websites
+
+Searches relevant property sources for matching listings.
+
+18 — Read Listing Information
+
+Extracts useful information from property listings.
+
+19 — Compare Similar Properties
+
+Compares multiple properties against the buyer's requirements.
+
+20 — Find Matching Homes
+
+Identifies properties that best match the buyer profile.
+
+21 — Read Brochures
+
+Processes property brochures and marketing material.
+
+22 — Read PDFs
+
+Extracts useful information from PDF documents.
+
+23 — Check Availability
+
+Determines whether properties are available for viewing or purchase.
+
+24 — Build Recommendations
+
+Creates a shortlist of relevant properties.
+
+
+---
+
+📅 4. Showing Management
+
+25 — Book a Viewing
+
+Schedules a property viewing.
+
+26 — Check Calendars
+
+Checks the relevant agent's availability.
+
+27 — Prevent Scheduling Conflicts
+
+Avoids overlapping appointments.
+
+28 — Send Confirmation
+
+Sends appointment details to relevant parties.
+
+29 — Send Reminders
+
+Creates and sends appointment reminders.
+
+30 — Handle Rescheduling
+
+Moves appointments when plans change.
+
+31 — Update Appointment
+
+Updates the appointment status.
+
+32 — Notify Assigned Agent
+
+Notifies the responsible agent about the scheduled viewing.
+
+
+---
+
+🗂️ 5. CRM Operations
+
+33 — Create CRM Contact
+
+Creates the buyer/contact record.
+
+34 — Create Opportunity
+
+Creates a sales opportunity.
+
+35 — Update Sales Pipeline
+
+Moves the opportunity through the appropriate pipeline stage.
+
+36 — Save Notes
+
+Stores useful information from conversations and research.
+
+37 — Create Follow-up Tasks
+
+Creates tasks for future communication.
+
+38 — Record Interactions
+
+Maintains a history of important interactions.
+
+39 — Update Customer Status
+
+Keeps the customer's current stage accurate.
+
+40 — Track Progress
+
+Tracks the buyer throughout the sales process.
+
+
+---
+
+🏠 6. Transaction Coordination
+
+41 — Track Inspections
+
+Monitors inspection progress and deadlines.
+
+42 — Track Appraisals
+
+Monitors appraisal status.
+
+43 — Track Escrow
+
+Tracks escrow milestones.
+
+44 — Track Financing
+
+Monitors financing progress.
+
+45 — Track Closing Dates
+
+Keeps the closing timeline visible.
+
+46 — Request Missing Documents
+
+Identifies missing documents and requests them.
+
+47 — Organize Files
+
+Keeps transaction documents organized.
+
+48 — Flag Delays
+
+Identifies overdue tasks or potential transaction risks.
+
+
+---
+
+📧 7. Communication & Reporting
+
+49 — Send Property Brochures
+
+Sends relevant property information to buyers.
+
+50 — Send Follow-up Emails
+
+Automatically follows up with leads and buyers.
+
+51 — Send Reminders
+
+Sends important reminders for appointments and tasks.
+
+52 — Update Dashboards
+
+Keeps operational dashboards current.
+
+53 — Generate Daily Reports
+
+Creates daily summaries of completed and outstanding work.
+
+54 — Measure AI Performance
+
+Tracks:
+
+Tasks completed
+
+Successful workflows
+
+Failed workflows
+
+Execution time
+
+Activity
+
+
+55 — Calculate Time Saved
+
+Estimates repetitive work completed on behalf of the brokerage.
+
+56 — Deliver Executive Summary
+
+Provides management with a concise overview of:
+
+Leads
+
+Transactions
+
+Showings
+
+Deadlines
+
+Completed tasks
+
+Outstanding actions
+
+AI performance
 
 
 
-↓
+---
+
+🤖 Computer-Use Automation
+
+One of the core ideas behind RealtyOS is that an AI employee should be able to do the work, not just explain what a human should do.
+
+Traditional automation often depends entirely on APIs.
+
+Real businesses use many systems that may have different interfaces, workflows, and integration capabilities.
+
+RealtyOS is designed around an architecture where:
+
+┌───────────────┐
+                │   RealtyOS    │
+                │ AI Employee   │
+                └───────┬───────┘
+                        │
+             ┌──────────┴──────────┐
+             │                     │
+          API Calls          Computer Use
+             │                     │
+       ┌─────┴─────┐       ┌───────┴────────┐
+       │ CRM       │       │ Websites       │
+       │ Calendar  │       │ Dashboards     │
+       │ Email     │       │ Forms          │
+       │ Documents │       │ Browser Apps   │
+       └───────────┘       └────────────────┘
+
+The goal is to make RealtyOS capable of operating across the tools a brokerage already uses.
 
 
+---
+
+🧑‍💼 AI Employee Mission Control
+
+The RealtyOS dashboard gives the brokerage visibility into what its AI employee is doing.
+
+Example metrics:
+
+Metric	Example
+
+Leads Received	24
+Leads Qualified	18
+Hot Leads	7
+Showings Booked	9
+CRM Updates	31
+Follow-ups Sent	42
+Documents Requested	8
+Transactions Monitored	14
+Tasks Completed	137
+Estimated Time Saved	11.4 hrs
+
+
+The dashboard also displays:
+
+Active AI tasks
+
+Completed tasks
+
+Failed tasks
+
+Upcoming deadlines
+
+Pending approvals
+
+Recent activity
+
+Transaction status
+
+Lead pipeline
+
+
+
+---
+
+📊 Daily AI Performance Report
+
+RealtyOS is designed to report back to the brokerage every day.
+
+Example:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      REALTYOS DAILY REPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Leads Received          24
+Leads Qualified         18
+Hot Leads                7
+
+Showings Booked          9
+
+CRM Updates             31
+
+Follow-ups Sent         42
+
+Documents Requested      8
+Documents Received       6
+
+Transactions Monitored  14
+
+Tasks Completed        137
+
+Estimated Time Saved  11.4 hrs
+
+Attention Required       3
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The goal is simple:
+
+The brokerage should know what its AI employee accomplished without manually checking every system.
+
+
+---
+
+🏢 Who is RealtyOS For?
+
+Real Estate Agents
+
+Reduce repetitive administrative work and spend more time with clients.
+
+Real Estate Teams
+
+Give agents an AI operations assistant.
+
+Brokerages
+
+Standardize lead handling, follow-up, CRM operations, and transaction workflows.
+
+Enterprise Real Estate Firms
+
+Coordinate operations across larger teams and multiple systems.
+
+Property Managers
+
+Automate repetitive communication, scheduling, documents, and reporting.
+
+
+---
+
+💰 Why Real Estate Businesses Would Pay
+
+Real estate businesses generate revenue from transactions.
+
+But a large amount of work around those transactions is repetitive.
+
+RealtyOS targets that gap.
+
+The goal is not to replace agents.
+
+The goal is to remove repetitive operational work so professionals can focus on:
+
+Clients
+
+Negotiations
+
+Advice
+
+Relationships
+
+Sales
+
+Closing deals
+
+
+The value proposition:
+
+> Hire an AI employee to handle repetitive operations while your people focus on the work that requires people.
+
+
+
+
+---
+
+🔌 Integration Architecture
+
+RealtyOS is designed with a modular integration architecture.
+
+Potential integrations include:
 
 CRM
 
+HubSpot
 
+Salesforce
 
-↓
+Follow Up Boss
 
+Pipedrive
 
+Zoho
 
-Transaction
+GoHighLevel
 
 
+Communication
 
-↓
+Gmail
 
+Outlook
 
+SMS
 
-Closing
+WhatsApp
 
 
+Scheduling
 
-Use elegant animated connectors.
+Google Calendar
 
+Microsoft Outlook Calendar
 
 
-Glass badges.
+Documents
 
+Google Drive
 
+Dropbox
 
-Subtle glowing indicators.
+OneDrive
 
+DocuSign
 
 
-========================================================
+Business
 
-MICRO INTERACTIONS
+QuickBooks
 
-========================================================
+Stripe
 
+Google Sheets
 
+Airtable
 
-Everything should feel alive.
+Zapier
 
 
+Property Sources
 
-Buttons gently elevate.
+MLS systems
 
+Zillow
 
+Realtor.com
 
-Glass panels shimmer.
+Homes.com
 
 
+Actual availability depends on the platform's API, permissions, account access, and terms.
 
-Navigation fades.
 
+---
 
+⚙️ Coasty AI Integration
 
-Text reveals smoothly.
+RealtyOS is designed to use Coasty AI as its computer-use execution layer.
 
+The application architecture keeps the Coasty API key server-side.
 
+Environment Variable
 
-Icons animate softly.
+Create a .env file locally:
 
+COASTY_API_KEY=your_coasty_api_key
 
+For deployment, configure the same secret in the Vercel project environment variables.
 
-Cards float slightly.
+Important
 
+Never commit your real API key to GitHub.
 
+The repository should only contain:
 
-Hover states should feel premium.
+COASTY_API_KEY=
 
+inside .env.example.
 
 
-========================================================
+---
 
-TYPOGRAPHY
+🔐 Security
 
-========================================================
+RealtyOS follows a backend-first approach for sensitive credentials.
 
+User
+ │
+ ▼
+RealtyOS Frontend
+ │
+ ▼
+Secure Backend
+ │
+ ▼
+Coasty AI API
+ │
+ ▼
+Computer / Browser Actions
 
+API keys should never be exposed in frontend JavaScript.
 
-Huge hero headline.
+Production deployments should use:
 
+Environment variables
 
+Server-side API calls
 
-Very generous spacing.
+Secure authentication
 
+Role-based permissions
 
+Audit logs
 
-Minimal copy.
+Secret management
 
+HTTPS
 
+Least-privilege access
 
-Readable hierarchy.
 
 
+---
 
-Elegant white typography.
+🛠️ Tech Stack
 
+Frontend
 
+React
 
-Avoid clutter.
+TypeScript
 
+Tailwind CSS
 
+Framer Motion
 
-========================================================
+Lucide React
 
-RESPONSIVENESS
 
-========================================================
+AI Execution
 
+Coasty AI Computer Use
 
 
-Desktop
+Deployment
 
+Vercel
 
 
-Large cinematic experience.
+Architecture
 
+Component-based React architecture
 
+Modular service layer
 
-Tablet
+Backend-ready API architecture
 
+Responsive interface
 
+Real-time activity concepts
 
-Adaptive layout.
 
 
+---
 
-Mobile
+📦 Installation
 
+Clone the repository:
 
+git clone YOUR_GITHUB_REPOSITORY_URL
 
-Maintain cinematic storytelling.
+Enter the project:
 
+cd realtyos
 
+Install dependencies:
 
-Navigation becomes full-screen drawer.
+npm install
 
+Create your environment file:
 
+cp .env.example .env
 
-Timeline remains scroll controlled.
+Add your Coasty API key:
 
+COASTY_API_KEY=your_coasty_api_key
 
+Start the development server:
 
-========================================================
-
-PERFORMANCE
-
-========================================================
-
-
-
-Prioritize smoothness.
-
-
-
-No heavy animation libraries except Framer Motion.
-
-
-
-GPU acceleration.
-
-
-
-Lazy loading.
-
-
-
-Optimized rendering.
-
-
-
-Maintain approximately 60fps.
-
-
-
-========================================================
-
-FINAL EXPERIENCE
-
-========================================================
-
-
-
-The visitor should feel like they are hiring an autonomous AI employee—not buying software.
-
-
-
-The homepage should feel closer to an Apple product launch than a traditional SaaS landing page.
-
-
-
-The first impression should communicate luxury, intelligence, trust, and enterprise capability.
-
-
-
-Every animation, transition, interaction, and layout decision should reinforce the idea that RealtyOS is the future operating system for modern real estate businesses.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/cf9a113a-75ee-4025-a9b2-91afdfdcca28).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
 npm run dev
-```
+
+Open:
+
+http://localhost:5173
+
+
+---
+
+🔑 Environment Variables
+
+Create .env.example:
+
+# Coasty AI
+COASTY_API_KEY=
+
+# Application
+VITE_APP_NAME=RealtyOS
+
+Never commit:
+
+.env
+
+to GitHub.
+
+
+---
+
+🚀 Deployment
+
+RealtyOS can be deployed using Vercel.
+
+1. Import the GitHub repository
+
+Connect the repository to Vercel.
+
+2. Configure environment variables
+
+Add:
+
+COASTY_API_KEY
+
+to the Vercel project settings.
+
+3. Deploy
+
+Vercel will build and deploy the application.
+
+Live Project
+
+https://realtyosai.vercel.app
+
+
+---
+
+🎥 Demo
+
+The demo focuses on the actual business workflow rather than simply showing a chatbot.
+
+The intended demonstration is:
+
+New Lead
+   ↓
+Qualification
+   ↓
+Property Research
+   ↓
+Showing
+   ↓
+CRM
+   ↓
+Follow-up
+   ↓
+Transaction
+   ↓
+Documents
+   ↓
+Daily Report
+
+The goal is to show RealtyOS performing useful business actions through the workflow.
+
+
+---
+
+🏆 Coasty AI Open Source Agent Challenge
+
+RealtyOS was created for the Coasty AI open-source agent challenge.
+
+The challenge asks developers to:
+
+Solve a real business workflow
+
+Build a workflow containing at least 50 steps
+
+Publish the GitHub repository
+
+Demonstrate the agent working
+
+Build something companies could actually use
+
+
+RealtyOS was designed around a 56-step real estate operations workflow.
+
+The project focuses on a real business problem:
+
+> Real estate professionals spend too much time moving information between systems and completing repetitive operational tasks.
+
+
+
+RealtyOS turns those tasks into an AI employee workflow.
+
+
+---
+
+📸 Project Screenshots
+
+Add screenshots of the actual application here.
+
+Recommended screenshots:
+
+Hero
+
+docs/screenshots/hero.png
+
+Mission Control
+
+docs/screenshots/dashboard.png
+
+AI Activity
+
+docs/screenshots/ai-activity.png
+
+Lead Management
+
+docs/screenshots/leads.png
+
+Transaction Center
+
+docs/screenshots/transactions.png
+
+Daily Report
+
+docs/screenshots/daily-report.png
+
+
+---
+
+🎬 Demo GIF
+
+For the GitHub README, add a short GIF showing the agent performing a real workflow.
+
+Place it here:
+
+docs/demo/realtyos-demo.gif
+
+Then embed it:
+
+![RealtyOS Demo](docs/demo/realtyos-demo.gif)
+
+
+---
+
+🗺️ Roadmap
+
+Phase 1 — Prototype
+
+[x] RealtyOS brand
+
+[x] Cinematic website
+
+[x] AI employee concept
+
+[x] 56-step workflow
+
+[x] Mission Control concept
+
+[x] Coasty integration architecture
+
+[x] Vercel deployment
+
+
+Phase 2 — Automation
+
+[ ] Live Coasty task execution
+
+[ ] Lead ingestion
+
+[ ] CRM integrations
+
+[ ] Calendar integrations
+
+[ ] Email automation
+
+[ ] Document workflows
+
+[ ] Showing automation
+
+
+Phase 3 — Transaction Intelligence
+
+[ ] Automated transaction monitoring
+
+[ ] Deadline detection
+
+[ ] Document intelligence
+
+[ ] Risk alerts
+
+[ ] Approval workflows
+
+
+Phase 4 — Enterprise
+
+[ ] Multi-office management
+
+[ ] Enterprise SSO
+
+[ ] Advanced permissions
+
+[ ] Audit controls
+
+[ ] Advanced analytics
+
+[ ] Custom workflows
+
+[ ] White-label deployments
+
+
+
+---
+
+🧠 Product Philosophy
+
+RealtyOS is built around one idea:
+
+> Don't give businesses another tool to operate. Give them an AI employee that operates the tools they already use.
+
+
+
+The future of business automation shouldn't be:
+
+Human
+ ↓
+Dashboard
+ ↓
+Human clicks buttons
+ ↓
+Human completes task
+
+It should increasingly become:
+
+Human
+ ↓
+Gives RealtyOS a goal
+ ↓
+RealtyOS executes the workflow
+ ↓
+Human reviews important decisions
+ ↓
+RealtyOS reports results
+
+
+---
+
+⚠️ Responsible Automation
+
+Real estate transactions can involve legal, financial, contractual, and regulatory requirements.
+
+RealtyOS is intended to automate repetitive operational tasks while keeping appropriate human oversight for decisions that require professional judgment.
+
+Production deployments should include:
+
+Human approval controls
+
+Appropriate permissions
+
+Security controls
+
+Compliance review
+
+Integration-specific validation
+
+Audit logging
+
+
+The AI should not make legal or financial decisions on behalf of licensed professionals without appropriate review.
+
+
+---
+
+🤝 Contributing
+
+Contributions are welcome.
+
+To contribute:
+
+git checkout -b feature/your-feature
+
+Make your changes, test them, then open a pull request.
+
+Please keep contributions:
+
+Focused
+
+Documented
+
+Secure
+
+Tested
+
+Compatible with the existing architecture
+
+
+
+---
+
+📄 License
+
+Add the project's chosen open-source license here.
+
+For example:
+
+MIT License
+
+
+---
+
+🔗 Links
+
+🌐 Live Application
+
+https://realtyosai.vercel.app
+
+💻 GitHub
+
+YOUR_GITHUB_REPOSITORY_URL
+
+🎥 Demo Video
+
+YOUR_DEMO_VIDEO_URL
+
+
+---
+
+🙏 Acknowledgements
+
+Built for the Coasty AI Open Source Agent Challenge.
+
+Special thanks to the Coasty AI team for creating a challenge focused on building agents that perform real business work rather than simple toy demonstrations.
+
+
+---
+
+⭐ RealtyOS
+
+The AI Operating System for Modern Real Estate.
+
+> Hire the AI employee. Let your people focus on the deal.
+
+
+
+### `.env.example` to include in the repo
+
+```env
+# Coasty AI API
+COASTY_API_KEY=
+
+# Application
+VITE_APP_NAME=RealtyOS
+
+node_modules/
+dist/
+.env
+.env.local
+.env.*.local
