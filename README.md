@@ -41,6 +41,8 @@ Instead of simply telling an agent what needs to be done, RealtyOS is designed t
 
 > **Hire RealtyOS as your AI employee.**
 
+**Demo Video**
+https://share.zight.com/yAuE0Yry
 
 
 # 🎯 The Problem
@@ -725,7 +727,6 @@ Never commit your real API key to GitHub.
 The repository should only contain:
 
 COASTY_API_KEY=
-
 inside .env.example.
 
 
