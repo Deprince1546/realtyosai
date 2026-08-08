@@ -1,21 +1,17 @@
-You're right. Here is the finished README, with the useful pieces already built in: badges, live demo, 56-step workflow, architecture, screenshots/GIF placeholders, .env.example, setup instructions, Coasty integration, security, demo instructions, hackathon context, roadmap, and contribution/license sections.
-
-Replace your current README.md with this:
-
 # 🏡 RealtyOS
 
 ### The AI Operating System for Modern Real Estate
 
 > **An autonomous AI employee designed to handle repetitive real estate operations from lead intake to closing.**
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-black?style=for-the-badge)](https://realtyosai.vercel.app)
+[![Live Demo](https://realtyosai.vercel.app)
 [![Built with React](https://img.shields.io/badge/React-TypeScript-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 [![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
 [![Open Source](https://img.shields.io/badge/Open-Source-green?style=for-the-badge)](#contributing)
 
 🌐 **Live Project:** https://realtyosai.vercel.app
 
----
+
 
 ## 🚀 What is RealtyOS?
 
@@ -35,7 +31,7 @@ Real estate businesses spend a large amount of time on repetitive operational wo
 - Monitoring deadlines
 - Preparing reports
 
-These tasks are necessary, but they take agents and brokerage staff away from clients and revenue-generating work.
+These tasks are necessary, but they take agents and brokerage staff away from clients and revenue generating work.
 
 **RealtyOS is designed to take over this repetitive operational workload.**
 
@@ -45,7 +41,7 @@ Instead of simply telling an agent what needs to be done, RealtyOS is designed t
 
 > **Hire RealtyOS as your AI employee.**
 
----
+
 
 # 🎯 The Problem
 
@@ -104,8 +100,6 @@ Excessive administrative work
 RealtyOS is designed to connect these operational steps into one AI-driven workflow.
 
 
----
-
 💡 The Solution
 
 RealtyOS acts as a digital employee.
@@ -135,7 +129,6 @@ Where APIs are available, integrations can be used.
 Where a workflow requires interaction with a website or application, computer-use automation can perform the necessary browser actions.
 
 
----
 
 🧠 The 56-Step Workflow
 
@@ -144,7 +137,6 @@ RealtyOS is built around an end-to-end workflow containing 56 business actions.
 The workflow starts when a lead enters the brokerage and continues through qualification, property research, showing coordination, CRM management, transaction coordination, document collection, communication, and reporting.
 
 
----
 
 1. Lead Intake
 
@@ -196,7 +188,6 @@ Determines whether the buyer is ready now, planning ahead, or researching.
 Begins the buyer qualification process.
 
 
----
 
 🏡 2. Buyer Qualification
 
@@ -257,7 +248,6 @@ Creates a concise summary of the buyer.
 Determines the most appropriate next action.
 
 
----
 
 🔎 3. Property Research
 
@@ -294,7 +284,7 @@ Determines whether properties are available for viewing or purchase.
 Creates a shortlist of relevant properties.
 
 
----
+
 
 📅 4. Showing Management
 
@@ -331,7 +321,6 @@ Updates the appointment status.
 Notifies the responsible agent about the scheduled viewing.
 
 
----
 
 🗂️ 5. CRM Operations
 
@@ -368,7 +357,6 @@ Keeps the customer's current stage accurate.
 Tracks the buyer throughout the sales process.
 
 
----
 
 🏠 6. Transaction Coordination
 
@@ -405,7 +393,6 @@ Keeps transaction documents organized.
 Identifies overdue tasks or potential transaction risks.
 
 
----
 
 📧 7. Communication & Reporting
 
@@ -468,7 +455,6 @@ AI performance
 
 
 
----
 
 🤖 Computer-Use Automation
 
@@ -486,8 +472,7 @@ RealtyOS is designed around an architecture where:
                 └───────┬───────┘
                         │
              ┌──────────┴──────────┐
-             │                     │
-          API Calls          Computer Use
+             │                            Coasty API Calls          Computer Use
              │                     │
        ┌─────┴─────┐       ┌───────┴────────┐
        │ CRM       │       │ Websites       │
@@ -499,7 +484,7 @@ RealtyOS is designed around an architecture where:
 The goal is to make RealtyOS capable of operating across the tools a brokerage already uses.
 
 
----
+
 
 🧑‍💼 AI Employee Mission Control
 
@@ -541,7 +526,7 @@ Lead pipeline
 
 
 
----
+
 
 📊 Daily AI Performance Report
 
@@ -581,7 +566,7 @@ The goal is simple:
 The brokerage should know what its AI employee accomplished without manually checking every system.
 
 
----
+
 
 🏢 Who is RealtyOS For?
 
@@ -606,7 +591,7 @@ Property Managers
 Automate repetitive communication, scheduling, documents, and reporting.
 
 
----
+
 
 💰 Why Real Estate Businesses Would Pay
 
@@ -639,8 +624,6 @@ The value proposition:
 
 
 
-
----
 
 🔌 Integration Architecture
 
@@ -719,7 +702,7 @@ Homes.com
 Actual availability depends on the platform's API, permissions, account access, and terms.
 
 
----
+
 
 ⚙️ Coasty AI Integration
 
@@ -746,7 +729,7 @@ COASTY_API_KEY=
 inside .env.example.
 
 
----
+
 
 🔐 Security
 
@@ -788,7 +771,6 @@ Least-privilege access
 
 
 
----
 
 🛠️ Tech Stack
 
@@ -829,13 +811,12 @@ Real-time activity concepts
 
 
 
----
 
 📦 Installation
 
 Clone the repository:
 
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/Deprince1546/realtyos/tree/main
 
 Enter the project:
 
@@ -862,7 +843,7 @@ Open:
 http://localhost:5173
 
 
----
+
 
 🔑 Environment Variables
 
@@ -881,7 +862,7 @@ Never commit:
 to GitHub.
 
 
----
+
 
 🚀 Deployment
 
@@ -908,7 +889,7 @@ Live Project
 https://realtyosai.vercel.app
 
 
----
+
 
 🎥 Demo
 
@@ -937,7 +918,7 @@ Daily Report
 The goal is to show RealtyOS performing useful business actions through the workflow.
 
 
----
+
 
 🏆 Coasty AI Open Source Agent Challenge
 
@@ -967,55 +948,6 @@ The project focuses on a real business problem:
 RealtyOS turns those tasks into an AI employee workflow.
 
 
----
-
-📸 Project Screenshots
-
-Add screenshots of the actual application here.
-
-Recommended screenshots:
-
-Hero
-
-docs/screenshots/hero.png
-
-Mission Control
-
-docs/screenshots/dashboard.png
-
-AI Activity
-
-docs/screenshots/ai-activity.png
-
-Lead Management
-
-docs/screenshots/leads.png
-
-Transaction Center
-
-docs/screenshots/transactions.png
-
-Daily Report
-
-docs/screenshots/daily-report.png
-
-
----
-
-🎬 Demo GIF
-
-For the GitHub README, add a short GIF showing the agent performing a real workflow.
-
-Place it here:
-
-docs/demo/realtyos-demo.gif
-
-Then embed it:
-
-![RealtyOS Demo](docs/demo/realtyos-demo.gif)
-
-
----
 
 🗺️ Roadmap
 
@@ -1033,10 +965,7 @@ Phase 1 — Prototype
 
 [x] Coasty integration architecture
 
-[x] Vercel deployment
-
-
-Phase 2 — Automation
+[x] Vercel deployment I 
 
 [ ] Live Coasty task execution
 
@@ -1084,7 +1013,7 @@ Phase 4 — Enterprise
 
 
 
----
+
 
 🧠 Product Philosophy
 
@@ -1117,7 +1046,7 @@ Human reviews important decisions
 RealtyOS reports results
 
 
----
+
 
 ⚠️ Responsible Automation
 
@@ -1143,7 +1072,7 @@ Audit logging
 The AI should not make legal or financial decisions on behalf of licensed professionals without appropriate review.
 
 
----
+
 
 🤝 Contributing
 
@@ -1169,7 +1098,6 @@ Compatible with the existing architecture
 
 
 
----
 
 📄 License
 
@@ -1180,7 +1108,7 @@ For example:
 MIT License
 
 
----
+
 
 🔗 Links
 
@@ -1190,23 +1118,23 @@ https://realtyosai.vercel.app
 
 💻 GitHub
 
-YOUR_GITHUB_REPOSITORY_URL
+https://github.com/Deprince1546/realtyos/tree/main
 
 🎥 Demo Video
 
-YOUR_DEMO_VIDEO_URL
+link here
 
 
----
+
 
 🙏 Acknowledgements
 
-Built for the Coasty AI Open Source Agent Challenge.
+Built for the Coasty AI Open Source Business Agent Challenge.
 
 Special thanks to the Coasty AI team for creating a challenge focused on building agents that perform real business work rather than simple toy demonstrations.
 
 
----
+
 
 ⭐ RealtyOS
 
