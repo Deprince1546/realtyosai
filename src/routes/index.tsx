@@ -47,6 +47,8 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const go = (plan: string) => navigate({ to: "/auth", search: { plan, mode: "signup" } });
 
   return (
     <main className="relative">
@@ -57,7 +59,10 @@ function Index() {
       <Hero />
       <StorySections />
 
-      <section className="relative mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-5 py-24 text-center">
+      <section
+        id="pricing"
+        className="relative mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-5 py-24 text-center"
+      >
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,17 +79,41 @@ function Index() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           className="mt-6 max-w-lg text-[15px] leading-relaxed text-muted-foreground"
         >
-          Operating on day one. No headcount, no onboarding queue, no downtime.
+          One free week, then $150 per month. Operating on day one — no headcount, no onboarding
+          queue, no downtime.
         </motion.p>
+
+        <div className="mt-10 grid w-full gap-3 sm:grid-cols-3">
+          {PLANS.map((p) => (
+            <button
+              key={p.id}
+              onClick={() => go(p.id)}
+              className="glass-soft flex flex-col items-start rounded-2xl p-5 text-left transition-colors hover:border-accent/40"
+            >
+              <span className="text-[11px] tracking-[0.24em] text-muted-foreground uppercase">
+                {p.name}
+              </span>
+              <span className="font-display mt-3 text-[28px] leading-none text-foreground">
+                {p.price}
+              </span>
+              <span className="mt-1 text-[12px] text-muted-foreground">{p.cadence}</span>
+              <span className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
+                {p.blurb}
+              </span>
+            </button>
+          ))}
+        </div>
+
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <GlassButton variant="primary" size="lg">
+          <GlassButton variant="primary" size="lg" onClick={() => go("pro")}>
             Hire RealtyOS
           </GlassButton>
-          <GlassButton variant="ghost" size="lg">
+          <GlassButton variant="ghost" size="lg" onClick={() => go("trial")}>
             Start Free
           </GlassButton>
         </div>
       </section>
+
 
       <footer className="relative border-t border-border/40">
         <div className="glass-soft mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
