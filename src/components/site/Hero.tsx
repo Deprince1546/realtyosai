@@ -63,12 +63,13 @@ export function Hero() {
         transition={{ duration: 0.9, ease, delay: 0.98 }}
         className="mt-10 flex flex-wrap items-center justify-center gap-3"
       >
-        <GlassButton variant="primary" size="lg">
+        <GlassButton variant="primary" size="lg" onClick={() => go("pro")}>
           Hire RealtyOS
         </GlassButton>
-        <GlassButton variant="ghost" size="lg">
+        <GlassButton variant="ghost" size="lg" onClick={() => go("trial")}>
           Start Free
         </GlassButton>
+
       </motion.div>
 
       <div className="mt-14 w-full max-w-5xl">
