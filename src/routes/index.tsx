@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ScrollScene } from "@/components/site/ScrollScene";
@@ -8,7 +8,9 @@ import { Hero } from "@/components/site/Hero";
 import { StorySections } from "@/components/site/StorySections";
 import { GlassButton } from "@/components/site/GlassButton";
 import { Logo } from "@/components/site/Logo";
+import { PLANS } from "@/lib/actions";
 import { getRequestOrigin } from "@/lib/origin.functions";
+
 
 const TITLE = "RealtyOS — The AI Operating System for Modern Real Estate";
 const DESC =
