@@ -21,7 +21,7 @@ export const createJob = createServerFn({ method: "POST" })
         created_by: userId,
         action: data.action,
         title: data.title,
-        payload: data.payload ?? {},
+        payload: (data.payload ?? {}) as never,
         status: "queued",
       })
       .select("id")
