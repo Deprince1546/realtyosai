@@ -14,13 +14,248 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      companies: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          market: string | null
+          name: string
+          onboarding_complete: boolean
+          owner_id: string
+          phone: string | null
+          team_size: string | null
+          timezone: string | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          market?: string | null
+          name: string
+          onboarding_complete?: boolean
+          owner_id: string
+          phone?: string | null
+          team_size?: string | null
+          timezone?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          market?: string | null
+          name?: string
+          onboarding_complete?: boolean
+          owner_id?: string
+          phone?: string | null
+          team_size?: string | null
+          timezone?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      integrations: {
+        Row: {
+          company_id: string
+          config: Json
+          created_at: string
+          id: string
+          provider: string
+          status: string
+        }
+        Insert: {
+          company_id: string
+          config?: Json
+          created_at?: string
+          id?: string
+          provider: string
+          status?: string
+        }
+        Update: {
+          company_id?: string
+          config?: Json
+          created_at?: string
+          id?: string
+          provider?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "integrations_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      job_logs: {
+        Row: {
+          created_at: string
+          id: string
+          job_id: string
+          level: string
+          message: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          job_id: string
+          level?: string
+          message: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          job_id?: string
+          level?: string
+          message?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "job_logs_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      jobs: {
+        Row: {
+          action: string
+          attempts: number
+          company_id: string
+          completed_at: string | null
+          created_at: string
+          created_by: string
+          error: string | null
+          id: string
+          max_attempts: number
+          payload: Json
+          progress: number
+          result: Json | null
+          started_at: string | null
+          status: string
+          title: string
+        }
+        Insert: {
+          action: string
+          attempts?: number
+          company_id: string
+          completed_at?: string | null
+          created_at?: string
+          created_by: string
+          error?: string | null
+          id?: string
+          max_attempts?: number
+          payload?: Json
+          progress?: number
+          result?: Json | null
+          started_at?: string | null
+          status?: string
+          title: string
+        }
+        Update: {
+          action?: string
+          attempts?: number
+          company_id?: string
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string
+          error?: string | null
+          id?: string
+          max_attempts?: number
+          payload?: Json
+          progress?: number
+          result?: Json | null
+          started_at?: string | null
+          status?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "jobs_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      subscriptions: {
+        Row: {
+          company_id: string
+          created_at: string
+          current_period_end: string | null
+          id: string
+          plan: string
+          status: string
+          trial_ends_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          current_period_end?: string | null
+          id?: string
+          plan?: string
+          status?: string
+          trial_ends_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          current_period_end?: string | null
+          id?: string
+          plan?: string
+          status?: string
+          trial_ends_at?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "subscriptions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      owns_company: { Args: { _company_id: string }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
