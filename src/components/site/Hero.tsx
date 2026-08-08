@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "@tanstack/react-router";
 import { GlassButton } from "./GlassButton";
 import { WorkflowRail } from "./WorkflowRail";
 import { Wordmark } from "./Logo";
@@ -9,9 +10,12 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function Hero() {
   const head = usePointerParallax(5);
   const cta = usePointerParallax(3);
+  const navigate = useNavigate();
+  const go = (plan: string) => navigate({ to: "/auth", search: { plan, mode: "signup" } });
 
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center px-5 pt-28 pb-16 text-center">
+
       <motion.div style={{ x: head.x, y: head.y, willChange: "transform" }}>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
