@@ -65,14 +65,20 @@ function Dashboard() {
     queryKey: ["jobs", company?.id],
     enabled: Boolean(company?.id),
     refetchInterval: 3000,
-    queryFn: () => jobsFn({ data: { companyId: company!.id } }),
+    queryFn: () => {
+      if (!company) throw new Error("Company is not ready");
+      return jobsFn({ data: { companyId: company.id } });
+    },
   });
 
   const logsQuery = useQuery({
     queryKey: ["logs", openJob],
     enabled: Boolean(openJob),
     refetchInterval: 3000,
-    queryFn: () => logsFn({ data: { jobId: openJob! } }),
+    queryFn: () => {
+      if (!openJob) throw new Error("No job selected");
+      return logsFn({ data: { jobId: openJob } });
+    },
   });
 
   if (accountQuery.isLoading) {
@@ -92,7 +98,7 @@ function Dashboard() {
     setPending(actionKey);
     try {
       const { jobId } = await create({
-        data: { companyId: company!.id, action: actionKey, title },
+        data: { companyId: company.id, action: actionKey, title },
       });
       setOpenJob(jobId);
       await qc.invalidateQueries({ queryKey: ["jobs"] });
@@ -108,7 +114,7 @@ function Dashboard() {
 
   async function changePlan(plan: PlanId) {
     try {
-      await planFn({ data: { companyId: company!.id, plan } });
+      await planFn({ data: { companyId: company.id, plan } });
       await qc.invalidateQueries({ queryKey: ["account"] });
       toast.success("Plan updated.");
     } catch (error) {
@@ -137,8 +143,10 @@ function Dashboard() {
             <GlassButton
               variant="ghost"
               onClick={async () => {
+                await qc.cancelQueries();
+                qc.clear();
                 await supabase.auth.signOut();
-                navigate({ to: "/" });
+                navigate({ to: "/auth", search: { mode: "signin" }, replace: true });
               }}
             >
               <LogOut className="mr-2 h-3.5 w-3.5" /> Sign out

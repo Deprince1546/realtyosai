@@ -1,17 +1,10 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { z } from "zod";
-
-const CreateJobInput = z.object({
-  companyId: z.string().uuid(),
-  action: z.string().min(1).max(64),
-  title: z.string().min(1).max(120),
-  payload: z.record(z.unknown()).optional(),
-});
+import { companyIdInputSchema, createJobInputSchema, jobIdInputSchema } from "./jobs.schemas";
 
 export const createJob = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => CreateJobInput.parse(input))
+  .inputValidator((input: unknown) => createJobInputSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
     const { data: job, error } = await supabase
@@ -37,7 +30,7 @@ export const createJob = createServerFn({ method: "POST" })
 
 export const runJob = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => z.object({ jobId: z.string().uuid() }).parse(input))
+  .inputValidator((input: unknown) => jobIdInputSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { executeJob } = await import("./jobs.server");
     return executeJob(context.supabase, data.jobId);
@@ -45,7 +38,7 @@ export const runJob = createServerFn({ method: "POST" })
 
 export const listJobs = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => z.object({ companyId: z.string().uuid() }).parse(input))
+  .inputValidator((input: unknown) => companyIdInputSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { data: jobs, error } = await context.supabase
       .from("jobs")
@@ -59,7 +52,7 @@ export const listJobs = createServerFn({ method: "POST" })
 
 export const getJobLogs = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => z.object({ jobId: z.string().uuid() }).parse(input))
+  .inputValidator((input: unknown) => jobIdInputSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { data: logs, error } = await context.supabase
       .from("job_logs")

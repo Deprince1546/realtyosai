@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate, useSearch, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { toast } from "sonner";
@@ -75,8 +75,6 @@ function Onboarding() {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const canContinue = useMemo(() => form.name.trim().length > 1, [form.name]);
 
   async function finish() {
     setBusy(true);
@@ -257,7 +255,7 @@ function Onboarding() {
               <GlassButton
                 variant="primary"
                 size="lg"
-                disabled={!canContinue}
+                disabled={busy}
                 onClick={() => setStep(step + 1)}
               >
                 Continue

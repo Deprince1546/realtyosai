@@ -36,8 +36,11 @@ function AuthPage() {
   const [fullName, setFullName] = useState("");
   const [busy, setBusy] = useState(false);
 
-  const next = () =>
-    navigate({ to: "/onboarding", search: search.plan ? { plan: search.plan } : {} });
+  const next = () => {
+    const storedPlan = search.plan ?? sessionStorage.getItem("realtyos_plan") ?? undefined;
+    sessionStorage.removeItem("realtyos_plan");
+    return navigate({ to: "/onboarding", search: storedPlan ? { plan: storedPlan } : {} });
+  };
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -48,7 +51,7 @@ function AuthPage() {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/onboarding`,
+            emailRedirectTo: `${window.location.origin}/auth?mode=signin`,
             data: { full_name: fullName },
           },
         });
