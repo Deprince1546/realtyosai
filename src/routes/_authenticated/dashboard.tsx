@@ -93,12 +93,13 @@ function Dashboard() {
     navigate({ to: "/onboarding" });
     return null;
   }
+  const companyId = company.id;
 
   async function dispatch(actionKey: string, title: string) {
     setPending(actionKey);
     try {
       const { jobId } = await create({
-        data: { companyId: company.id, action: actionKey, title },
+        data: { companyId, action: actionKey, title },
       });
       setOpenJob(jobId);
       await qc.invalidateQueries({ queryKey: ["jobs"] });
@@ -114,7 +115,7 @@ function Dashboard() {
 
   async function changePlan(plan: PlanId) {
     try {
-      await planFn({ data: { companyId: company.id, plan } });
+      await planFn({ data: { companyId, plan } });
       await qc.invalidateQueries({ queryKey: ["account"] });
       toast.success("Plan updated.");
     } catch (error) {
