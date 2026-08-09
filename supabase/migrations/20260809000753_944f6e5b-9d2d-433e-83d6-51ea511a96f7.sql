@@ -1,0 +1,1 @@
+ALTER FUNCTION public.owns_company(uuid) SECURITY INVOKER;
