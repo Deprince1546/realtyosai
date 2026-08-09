@@ -4,7 +4,7 @@
 
 > **An autonomous AI employee designed to handle repetitive real estate operations from lead intake to closing.**
 
-[![Live Demo](https://realtyosai.lovable.app)
+[![Live Demo.(https://realtyosai.lovable.app)
 [![Built with React](https://img.shields.io/badge/React-TypeScript-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 [![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
 [![Open Source](https://img.shields.io/badge/Open-Source-green?style=for-the-badge)](#contributing)
