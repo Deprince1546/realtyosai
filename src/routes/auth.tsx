@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate, useSearch, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
@@ -42,6 +42,18 @@ function AuthPage() {
     return navigate({ to: "/onboarding", search: storedPlan ? { plan: storedPlan } : {} });
   };
 
+  useEffect(() => {
+    let active = true;
+    void supabase.auth.getUser().then(({ data }) => {
+      if (active && data.user) void next();
+    });
+    return () => {
+      active = false;
+    };
+    // This runs once to complete email and full-page OAuth returns.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
@@ -76,7 +88,7 @@ function AuthPage() {
     try {
       if (search.plan) sessionStorage.setItem("realtyos_plan", search.plan);
       const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: window.location.origin,
+        redirect_uri: `${window.location.origin}/auth?mode=signin`,
       });
       if (result.error) throw new Error(String(result.error));
       if (result.redirected) return;
