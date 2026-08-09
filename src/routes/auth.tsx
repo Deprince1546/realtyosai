@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate, useSearch, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
@@ -36,8 +36,23 @@ function AuthPage() {
   const [fullName, setFullName] = useState("");
   const [busy, setBusy] = useState(false);
 
-  const next = () =>
-    navigate({ to: "/onboarding", search: search.plan ? { plan: search.plan } : {} });
+  const next = () => {
+    const storedPlan = search.plan ?? sessionStorage.getItem("realtyos_plan") ?? undefined;
+    sessionStorage.removeItem("realtyos_plan");
+    return navigate({ to: "/onboarding", search: storedPlan ? { plan: storedPlan } : {} });
+  };
+
+  useEffect(() => {
+    let active = true;
+    void supabase.auth.getUser().then(({ data }) => {
+      if (active && data.user) void next();
+    });
+    return () => {
+      active = false;
+    };
+    // This runs once to complete email and full-page OAuth returns.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -48,7 +63,7 @@ function AuthPage() {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/onboarding`,
+            emailRedirectTo: `${window.location.origin}/auth?mode=signin`,
             data: { full_name: fullName },
           },
         });
@@ -73,7 +88,7 @@ function AuthPage() {
     try {
       if (search.plan) sessionStorage.setItem("realtyos_plan", search.plan);
       const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: window.location.origin,
+        redirect_uri: `${window.location.origin}/auth?mode=signin`,
       });
       if (result.error) throw new Error(String(result.error));
       if (result.redirected) return;

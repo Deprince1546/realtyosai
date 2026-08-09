@@ -1,48 +1,68 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { z } from "zod";
-
-const OnboardingInput = z.object({
-  name: z.string().trim().min(1).max(120),
-  website: z.string().trim().max(200).optional().or(z.literal("")),
-  phone: z.string().trim().max(40).optional().or(z.literal("")),
-  market: z.string().trim().max(120).optional().or(z.literal("")),
-  teamSize: z.string().trim().max(40).optional().or(z.literal("")),
-  description: z.string().trim().max(1000).optional().or(z.literal("")),
-  timezone: z.string().trim().max(80).optional().or(z.literal("")),
-  tools: z.array(z.string().min(1).max(60)).max(40).default([]),
-  plan: z.enum(["trial", "pro", "business"]),
-});
+import {
+  connectToolInputSchema,
+  onboardingInputSchema,
+  setPlanInputSchema,
+} from "./account.schemas";
 
 export const getAccount = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
     const { supabase, userId } = context;
-    const { data: company } = await supabase
+    const { data: existingCompany, error: companyReadError } = await supabase
       .from("companies")
       .select("*")
       .eq("owner_id", userId)
       .maybeSingle();
+    if (companyReadError) throw new Error(companyReadError.message);
 
-    if (!company) return { company: null, subscription: null, integrations: [] };
+    let company = existingCompany;
+    if (!company) {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("full_name")
+        .eq("id", userId)
+        .maybeSingle();
+      const fallbackName = profile?.full_name?.trim() || "My brokerage";
+      const { data: createdCompany, error: createError } = await supabase
+        .from("companies")
+        .insert({ owner_id: userId, name: fallbackName, onboarding_complete: false })
+        .select("*")
+        .single();
+      if (createError) throw new Error(createError.message);
+      company = createdCompany;
 
-    const [{ data: subscription }, { data: integrations }] = await Promise.all([
+      const trialEnd = new Date(Date.now() + 7 * 864e5).toISOString();
+      const { error: trialError } = await supabase.from("subscriptions").insert({
+        company_id: company.id,
+        plan: "trial",
+        status: "active",
+        trial_ends_at: trialEnd,
+        current_period_end: trialEnd,
+      });
+      if (trialError) throw new Error(trialError.message);
+    }
+
+    const [{ data: subscription, error: subscriptionError }, { data: integrations, error: integrationsError }] = await Promise.all([
       supabase.from("subscriptions").select("*").eq("company_id", company.id).maybeSingle(),
       supabase.from("integrations").select("*").eq("company_id", company.id),
     ]);
+    if (subscriptionError) throw new Error(subscriptionError.message);
+    if (integrationsError) throw new Error(integrationsError.message);
 
     return { company, subscription, integrations: integrations ?? [] };
   });
 
 export const saveOnboarding = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => OnboardingInput.parse(input))
+  .inputValidator((input: unknown) => onboardingInputSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
 
     const fields = {
       owner_id: userId,
-      name: data.name,
+      name: data.name || "My brokerage",
       website: data.website || null,
       phone: data.phone || null,
       market: data.market || null,
@@ -110,11 +130,7 @@ export const saveOnboarding = createServerFn({ method: "POST" })
 
 export const setPlan = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) =>
-    z
-      .object({ companyId: z.string().uuid(), plan: z.enum(["trial", "pro", "business"]) })
-      .parse(input),
-  )
+  .inputValidator((input: unknown) => setPlanInputSchema.parse(input))
   .handler(async ({ data, context }) => {
     const now = Date.now();
     const period =
@@ -140,15 +156,7 @@ export const setPlan = createServerFn({ method: "POST" })
 
 export const connectTool = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) =>
-    z
-      .object({
-        companyId: z.string().uuid(),
-        provider: z.string().min(1).max(60),
-        connected: z.boolean(),
-      })
-      .parse(input),
-  )
+  .inputValidator((input: unknown) => connectToolInputSchema.parse(input))
   .handler(async ({ data, context }) => {
     if (!data.connected) {
       const { error } = await context.supabase
