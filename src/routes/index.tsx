@@ -9,18 +9,16 @@ import { StorySections } from "@/components/site/StorySections";
 import { GlassButton } from "@/components/site/GlassButton";
 import { Logo } from "@/components/site/Logo";
 import { PLANS } from "@/lib/actions";
-import { getRequestOrigin } from "@/lib/origin.functions";
 
+const SITE_URL = "https://realtyosai.lovable.app";
 
 const TITLE = "RealtyOS — The AI Operating System for Modern Real Estate";
 const DESC =
   "Hire one AI employee that captures leads, qualifies buyers, books showings, manages transactions, and keeps your brokerage running 24/7.";
 
 export const Route = createFileRoute("/")({
-  loader: async () => ({ origin: await getRequestOrigin() }),
-  head: ({ loaderData }) => {
-    const origin = loaderData?.origin ?? "";
-    const image = origin ? `${origin}/og-image.jpg` : undefined;
+  head: () => {
+    const image = `${SITE_URL}/og-image.jpg`;
     return {
       meta: [
         { title: TITLE },
