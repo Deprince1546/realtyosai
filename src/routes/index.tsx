@@ -9,18 +9,16 @@ import { StorySections } from "@/components/site/StorySections";
 import { GlassButton } from "@/components/site/GlassButton";
 import { Logo } from "@/components/site/Logo";
 import { PLANS } from "@/lib/actions";
-import { getRequestOrigin } from "@/lib/origin.functions";
 
+const SITE_URL = "https://realtyosai.lovable.app";
 
 const TITLE = "RealtyOS — The AI Operating System for Modern Real Estate";
 const DESC =
   "Hire one AI employee that captures leads, qualifies buyers, books showings, manages transactions, and keeps your brokerage running 24/7.";
 
 export const Route = createFileRoute("/")({
-  loader: async () => ({ origin: await getRequestOrigin() }),
-  head: ({ loaderData }) => {
-    const origin = loaderData?.origin ?? "";
-    const image = origin ? `${origin}/og-image.jpg` : undefined;
+  head: () => {
+    const image = `${SITE_URL}/og-image.jpg`;
     return {
       meta: [
         { title: TITLE },
@@ -28,18 +26,14 @@ export const Route = createFileRoute("/")({
         { property: "og:title", content: TITLE },
         { property: "og:description", content: DESC },
         { property: "og:type", content: "website" },
-        { property: "og:url", content: "/" },
+        { property: "og:url", content: SITE_URL },
         { name: "twitter:card", content: "summary_large_image" },
-        ...(image
-          ? [
-              { property: "og:image", content: image },
-              { property: "og:image:width", content: "1200" },
-              { property: "og:image:height", content: "630" },
-              { name: "twitter:image", content: image },
-            ]
-          : []),
+        { property: "og:image", content: image },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { name: "twitter:image", content: image },
       ],
-      links: [{ rel: "canonical", href: "/" }],
+      links: [{ rel: "canonical", href: SITE_URL }],
     };
   },
   component: Index,
